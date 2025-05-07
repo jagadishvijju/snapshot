@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            background-image: url('about-hero.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 180px 0;
+            border-radius: 12px;
+            margin-bottom: 60px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-section {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .story-image {
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .story-content h2 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .story-content p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .team-section {
+            background-color: #f9f9f9;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 70px;
+            background-image: radial-gradient(circle, #e0e0e0, #f9f9f9);
+        }
+
+        .team-section h2 {
+            font-size: 3.2em;
+            color: #333;
+            margin-bottom: 50px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .team-member {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-member-image-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 3px solid #f39c12; /* Accent color border */
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .team-member:hover .team-member img {
+            transform: scale(1.1);
+        }
+
+        .team-member h3 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .team-member p.role {
+            color: #777;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .team-member .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-member .social-links a {
+            font-size: 1.3em;
+            color: #555;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .team-member .social-links a:hover {
+            color: #f39c12; /* Accent color on hover */
+        }
+
+        .values-section {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .values-section h2 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-item i {
+            font-size: 2.5em;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .value-item h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .value-item p {
+            color: #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .story-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .story-image {
+                margin-bottom: 30px;
+            }
+
+            .team-grid, .values-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 120px 0;
+                margin-bottom: 40px;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+                margin-bottom: 15px;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .team-section {
+                padding: 40px;
+                margin-bottom: 50px;
+            }
+
+            .team-section h2 {
+                font-size: 2.8em;
+                margin-bottom: 40px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .story-content h2, .team-section h2, .values-section h2 {
+                font-size: 2.4em;
+            }
+        }
+
+        /* Subtle Animations */
+        .hero h1, .hero p {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s ease-out forwards 0.4s;
+        }
+
+        .story-content h2, .story-content p, .story-image {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 0.8s ease-out forwards 0.5s;
+        }
+
+        .team-section h2 {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.6s;
+        }
+
+        .team-member {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: fadeInUp 0.8s ease-out forwards 0.8s;
+        }
+
+        .values-section h2 {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards 0.7s;
+        }
+
+        .value-item {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 0.6s ease-out forwards 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section class="hero" style="background-image: url('women.jpg'); background-size: cover; background-position: center;">
+            <div class="hero-content">
+                <h1>Our Story</h1>
+                <p>We are a team of passionate individuals dedicated to SnapShot. We believe in capturing the beauty of fleeting moments and strive to provide you with timeless photographic memories.</p>
+            </div>
+        </section>
+        
+
+        <section class="story-section">
+            <div class="story-image">
+                <img src="men.webp" alt="Our Company Story">
+            </div>
+            <div class="story-content">
+                <h2>How We Started</h2>
+                <p>SnapShot began with a shared love for photography and a desire to make professional-quality photoshoots accessible to everyone. Inspired by the power of images to tell stories and evoke emotions, our founders [mention a brief, compelling origin story].</p>
+                <p>Today, SnapShot is a growing community of talented photographers and satisfied clients. We are committed to innovation, quality, and capturing the moments that matter most to you.</p>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img src="men1.avif" alt="John Doe">
+                    </div>
+                    <h3>John Doe</h3>
+                    <p class="role">CEO & Founder</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img src="women.jpg" alt="Jane Smith">
+                    </div>
+                    <h3>Jane Smith</h3>
+                    <p class="role">Head of Photography</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img src="CAPA-IN-COLOR_feature_1.jpg" alt="Peter Jones">
+                    </div>
+                    <h3>Peter Jones</h3>
+                    <p class="role">Lead Technician</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="values-section">
+            <h2>Our Core Values</h2>
+            <div class="values-list">
+                <div class="value-item">
+                    <i class="fas fa-camera-retro"></i>
+                    <h3>Passion</h3>
+                    <p>We are driven by our love for photography and capturing meaningful moments.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-heart"></i>
+                    <h3>Connection</h3>
+                    <p>We believe in creating genuine connections with our clients to understand their vision.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-highlighter"></i>
+                    <h3>Quality</h3>
+                    <p>We are committed to delivering exceptional photographic services and results.</p>
+                </div>
+                </div>
+        </section>
+    </div>
+
+</body>
+</html>
