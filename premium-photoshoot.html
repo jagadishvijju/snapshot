@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Photo Shoot Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative; /* To position the home button absolutely */
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #777;
+            font-size: 1.1em;
+        }
+
+        .home-button {
+            position: absolute;
+          
+            right: 20px;
+            background-color: #f88b8b;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #070707;
+        }
+
+        .services-overview {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .services-overview h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .service-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-image {
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-details h3 {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .service-details p {
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .service-details .price {
+            font-size: 1.2em;
+            color: #ff6600;
+            font-weight: bold;
+        }
+
+        .call-to-action {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .call-to-action h2 {
+            font-size: 2.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .book-now-button {
+            display: inline-block;
+            background-color: #ff6600;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-button:hover {
+            background-color: #e55300;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .service-item {
+                grid-template-columns: 1fr;
+            }
+
+            .service-image {
+                margin-bottom: 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .services-overview h2 {
+                font-size: 1.8em;
+            }
+
+            .service-details h3 {
+                font-size: 1.3em;
+            }
+
+            .call-to-action h2 {
+                font-size: 2em;
+            }
+
+            .book-now-button {
+                font-size: 1.1em;
+                padding: 12px 25px;
+            }
+
+            .home-button {
+                top: 15px;
+                right: 15px;
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="home-button">Home</a>
+        <header>
+            <h1>Elevate Your Moments with Premium Photo Shoots</h1>
+            <p>Capture timeless memories with our expert photographers and bespoke services.</p>
+        </header>
+
+        <section class="services-overview">
+            <h2>Our Premium Photo Shoot Services</h2>
+
+            <div class="service-item">
+                <img src="123.jpg" alt="Premium Portrait Photography" class="service-image">
+                <div class="service-details">
+                    <h3>Luxury Portrait Sessions</h3>
+                    <p>Indulge in a personalized portrait experience designed to capture your unique essence. Our skilled photographers use state-of-the-art equipment and techniques to create stunning, high-end portraits perfect for personal or professional use. Includes professional hair and makeup options.</p>
+                    <p class="price">Starting from ₹10,000</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-details">
+                    <h3>Exclusive Family & Group Photography</h3>
+                    <p>Create lasting family heirlooms with our premium family and group photo shoots. We focus on capturing genuine connections and beautiful moments in comfortable and luxurious settings. Choose from studio or on-location shoots with customizable themes and styling.</p>
+                    <p class="price">Starting from ₹18,000</p>
+                </div>
+                <img src="men1.avif" alt="Premium Family Photography" class="service-image">
+            </div>
+
+            <div class="service-item">
+                <img src="CAPA-IN-COLOR_feature_1.jpg" alt="Premium Event Photography" class="service-image">
+                <div class="service-details">
+                    <h3>High-End Event Coverage</h3>
+                    <p>Elevate your special events with our discreet and professional photography services. We specialize in capturing the atmosphere, details, and key moments of your high-end events, ensuring you have exquisite visual memories to cherish. Includes post-processing and digital image delivery.</p>
+                    <p class="price">Starting from ₹25,000</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-details">
+                    <h3>Bespoke Fashion & Editorial Shoots</h3>
+                    <p>Unleash your creative vision with our bespoke fashion and editorial photo shoots. Our experienced team collaborates with designers, stylists, and models to create compelling visual narratives for magazines, campaigns, and portfolios. Includes location scouting and creative direction.</p>
+                    <p class="price">Quotation Based</p>
+                </div>
+                <img src="men.webp" alt="Premium Fashion Photography" class="service-image">
+            </div>
+        </section>
+
+        <section class="call-to-action">
+            <h2>Ready for a Premium Photo Shoot Experience?</h2>
+            <p>Contact us today to discuss your vision and book your exclusive session.</p>
+            <a href="#" class="book-now-button">Book Your Session</a>
+        </section>
+    </div>
+
+</body>
+</html>

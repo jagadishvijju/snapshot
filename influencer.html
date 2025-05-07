@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urban Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f8f8;
+      line-height: 1.6;
+    }
+    .book-now-btn {
+      background-color: #ff6600;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 12px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    header {
+      background: #f88b8b;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .logo-section { display: flex; align-items: center; }
+    .logo { width: 120px; margin-right: 20px; }
+    .categories {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+    }
+    .categories a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+    }
+    .location-search-section {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .location-dropdown {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
+    }
+    .cart-profile-section {
+      display: flex;
+      gap: 15px;
+    }
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+    }
+    .photographers-section {
+      flex: 0 0 60%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .photographers-section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .photographer-item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+    .photographer-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    .photographer-details {
+      flex-grow: 1;
+    }
+    .photographer-name {
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .photographer-rating {
+      color: #ffc107;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .photographer-price {
+      color: #28a745;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .add-to-cart-section {
+      display: flex;
+      align-items: center;
+    }
+    .add-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+    .add-button:hover { background-color: #0056b3; }
+    .cart-preview {
+      flex: 0 0 35%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      padding: 15px;
+      height: fit-content;
+    }
+    .cart-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 18px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+    .cart-items {
+      list-style: none;
+      padding: 0;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed #ccc;
+    }
+    .cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .remove-button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .remove-button:hover { background-color: #c82333; }
+    .pay-now-btn {
+      background-color: #28a745;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .pay-now-btn:hover { background-color: #218838; }
+
+    /* Modal Styles */
+    #paymentModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    #paymentModal .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 350px;
+      max-width: 90%;
+    }
+    #paymentModal input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-section">
+    <img src="1-removebg-preview (1).png" alt="Urban Company Logo" class="logo">
+    <ul class="categories">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+  <div class="location-search-section">
+    <div class="location-dropdown">
+      <i class="fas fa-map-marker-alt"></i>
+      <span id="location-text">Fetching Location...</span>
+    </div>
+    <input type="text" class="search-input" placeholder="Search services...">
+  </div>
+  <div class="cart-profile-section">
+    <a href="#" class="book-now-btn">Login</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="photographers-section">
+    <h2>Top influencers</h2>
+    <div class="photographer-item">
+      <img src="women.jpg" class="photographer-image">
+      <div class="photographer-details">
+        <h3 class="photographer-name">Jagadish</h3>
+        <div class="photographer-rating"><i class="fas fa-star"></i> 4.9 (120 reviews)</div>
+        <p class="photographer-price">₹2,500 / Day</p>
+      </div>
+      <div class="add-to-cart-section">
+        <button class="add-button" data-id="1" data-name="Aisha Sharma" data-price="2500">Add</button>
+      </div>
+    </div>
+
+    <h2>Average influencers</h2>
+    <div class="photographer-item">
+      <img src="men.webp" class="photographer-image">
+      <div class="photographer-details">
+        <h3 class="photographer-name">Jhanavi</h3>
+        <div class="photographer-rating"><i class="fas fa-star"></i> 4.7 (95 reviews)</div>
+        <p class="photographer-price">₹1,200 / Day</p>
+      </div>
+      <div class="add-to-cart-section">
+        <button class="add-button" data-id="2" data-name="Rahul Verma" data-price="2200">Add</button>
+      </div>
+    </div>
+
+    <h2>Below Average influencers</h2>
+    <div class="photographer-item">
+      <img src="CAPA-IN-COLOR_feature_1.jpg" class="photographer-image">
+      <div class="photographer-details">
+        <h3 class="photographer-name">Sanjay</h3>
+        <div class="photographer-rating"><i class="fas fa-star"></i> 3.5 (60 reviews)</div>
+        <p class="photographer-price">₹800 / Day</p>
+      </div>
+      <div class="add-to-cart-section">
+        <button class="add-button" data-id="3" data-name="Manish Kumar" data-price="1800">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-preview">
+    <h2 class="cart-title">Your Cart</h2>
+    <ul class="cart-items"></ul>
+    <div class="cart-total">Total: ₹0</div>
+    <button class="pay-now-btn" id="payNowBtn" disabled>Pay Now</button>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div id="paymentModal">
+  <div class="modal-content">
+    <h2>Payment Summary</h2>
+    <div id="paymentDetails"></div>
+    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Card Holder Name">
+    <button onclick="closeModal()" style="background:#28a745; color:white; border:none; padding:10px; border-radius:5px; width:100%; margin-top:10px;">Confirm Payment</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const addButtons = document.querySelectorAll('.add-button');
+    const cartItemsList = document.querySelector('.cart-items');
+    const cartTotalElement = document.querySelector('.cart-total');
+    const payNowButton = document.getElementById('payNowBtn');
+    const paymentModal = document.getElementById('paymentModal');
+    const paymentDetails = document.getElementById('paymentDetails');
+    let cart = [];
+
+    function updateCartDisplay() {
+      cartItemsList.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('cart-item');
+        listItem.innerHTML = `
+          <span>${item.name}</span>
+          <span>₹${item.price}</span>
+          <button class="remove-button" data-id="${item.id}">Remove</button>
+        `;
+        cartItemsList.appendChild(listItem);
+        total += item.price;
+      });
+
+      const gst = (total * 0.18).toFixed(2);
+      const totalWithGST = (total + parseFloat(gst)).toFixed(2);
+      cartTotalElement.textContent = `Total: ₹${totalWithGST} (GST: ₹${gst})`;
+      payNowButton.disabled = cart.length === 0;
+
+      paymentDetails.innerHTML = `
+        <strong>Items:</strong><br>
+        ${cart.map(item => `${item.name} - ₹${item.price}`).join('<br>')}<br><br>
+        <strong>GST (18%):</strong> ₹${gst}<br>
+        <strong>Total:</strong> ₹${totalWithGST}
+      `;
+    }
+
+    addButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const photographerId = this.dataset.id;
+        const photographerName = this.dataset.name;
+        const photographerPrice = parseInt(this.dataset.price);
+        if (!cart.some(item => item.id === photographerId)) {
+          cart.push({ id: photographerId, name: photographerName, price: photographerPrice });
+          updateCartDisplay();
+        }
+      });
+    });
+
+    cartItemsList.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-button')) {
+        const itemIdToRemove = e.target.dataset.id;
+        cart = cart.filter(item => item.id !== itemIdToRemove);
+        updateCartDisplay();
+      }
+    });
+
+    payNowButton.addEventListener('click', () => {
+      paymentModal.style.display = 'flex';
+    });
+
+    updateCartDisplay();
+  });
+
+  function closeModal() {
+    document.getElementById('paymentModal').style.display = 'none';
+    alert('Payment processed successfully');
+  }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menu-toggle");
+      const mobileNav = document.getElementById("mobileNav");
+  
+      toggle.addEventListener("click", () => {
+        mobileNav.classList.toggle("active");
+      });
+  
+      // Geolocation
+      function updateLocationText(lat, lon) {
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`)
+          .then(res => res.json())
+          .then(data => {
+            const city = data.address.city || data.address.town || data.address.village || "Your City";
+            document.getElementById("location-text").textContent = city;
+            document.getElementById("mobile-location-text").textContent = city;
+          })
+          .catch(() => {
+            document.getElementById("location-text").textContent = "Location Unavailable";
+            document.getElementById("mobile-location-text").textContent = "Location Unavailable";
+          });
+      }
+  
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            const { latitude, longitude } = position.coords;
+            updateLocationText(latitude, longitude);
+          },
+          () => {
+            document.getElementById("location-text").textContent = "Location Unavailable";
+            document.getElementById("mobile-location-text").textContent = "Location Unavailable";
+          }
+        );
+      } else {
+        document.getElementById("location-text").textContent = "Geolocation Not Supported";
+        document.getElementById("mobile-location-text").textContent = "Geolocation Not Supported";
+      }
+    });
+  </script>
+</body>
+</html>
