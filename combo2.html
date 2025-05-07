@@ -1,548 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Urban Services - Combo Packages</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urban Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f8f8;
-            line-height: 1.6;
-        }
 
-        header {
-            background: #f88b8b;
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-        }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-        .logo {
-            width: 120px;
-            margin-right: 20px;
-        }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f8f8;
+    line-height: 1.6;
+  }
 
-        .categories {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
+  header {
+    background: #f8a6a6;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+  }
 
-        .categories a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-        }
+  .logo-section {
+    display: flex;
+    align-items: center;
+  }
 
-        .location-search-section {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+  .logo {
+    width: 120px;
+    margin-right: 20px;
+  }
 
-        .location-dropdown {
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+  .categories {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+  }
 
-        .search-input {
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 200px;
-        }
+  .categories a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+  }
 
-        .cart-profile-section {
-            display: flex;
-            gap: 15px;
-        }
+  .location-search-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
 
-        .cart-icon, .profile-icon {
-            font-size: 20px;
-            color: #333;
-        }
+  .location-dropdown {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+  }
 
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background: #fff;
-            padding: 20px;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            z-index: 99;
-        }
+  .cart-profile-section {
+    display: flex;
+    gap: 15px;
+  }
 
-        .mobile-nav.active {
-            display: flex;
-        }
+  .cart-icon, .profile-icon {
+    font-size: 20px;
+    color: #333;
+  }
 
-        .mobile-nav .categories,
-        .mobile-nav .location-search-section,
-        .mobile-nav .cart-profile-section {
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
+  /* Hamburger Menu */
+  .hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
 
-        .combo-packages-section {
-            padding: 40px 20px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
 
-        .combo-list {
-            flex: 0 0 60%; /* Adjust width as needed */
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
+  .mobile-nav.active {
+    display: flex;
+  }
 
-        .combo-list h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
+  .mobile-nav .categories,
+  .mobile-nav .location-search-section,
+  .mobile-nav .cart-profile-section {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
 
-        .combo-item {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
+  .services-section {
+    padding: 40px 20px;
+    background: #fff;
+    text-align: center;
+  }
 
-        .combo-item h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #555;
-        }
+  .services-section h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
 
-        .combo-includes {
-            list-style: none;
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
 
-        .combo-includes li {
-            margin-bottom: 5px;
-            color: #777;
-        }
+  .service-item, .combo-item {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: #333;
+  }
 
-        .combo-price {
-            font-size: 1.2em;
-            color: #ff6600;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+  .service-item:hover, .combo-item:hover {
+    transform: scale(1.03);
+  }
 
-        .add-combo-to-cart-btn {
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
+  .service-item i, .combo-item i {
+    font-size: 36px;
+    color: #ff6600;
+    margin-bottom: 10px;
+  }
 
-        .add-combo-to-cart-btn:hover {
-            background-color: #e55300;
-        }
+  .book-now-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 12px;
+    text-decoration: none;
+    display: inline-block;
+  }
 
-        .cart-section {
-            flex: 0 0 35%; /* Adjust width as needed */
-        }
+  .book-now-btn:hover {
+    background-color: #e55300;
+  }
 
-        .cart-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-        }
+ .combo-container {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+     gap: 40px;
+     padding: 40px;
+     max-width: 1200px;
+     margin: 0 auto;
+ }
 
-        .cart-items {
-            list-style: none;
-            padding: 0;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
+ .combo-card {
+     background-color: #fff;
+     border-radius: 12px;
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+     display: flex;
+     flex-direction: column;
+ }
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px dashed #ccc;
-        }
+ .combo-card:hover {
+     transform: translateY(-8px);
+     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+ }
 
-        .cart-item:last-child {
-            border-bottom: none;
-        }
+ .combo-header {
+     background-color: #007bff;
+     color: white;
+     padding: 25px;
+     text-align: center;
+     font-size: 1.8rem;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 15px;
+ }
 
-        .cart-item span {
-            flex-grow: 1;
-            margin-right: 10px;
-        }
+ .combo-header .icon {
+     font-size: 2rem;
+ }
 
-        .cart-item .remove-btn {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9em;
-        }
+ .combo-features {
+     list-style: none;
+     padding: 25px;
+     margin: 0;
+ }
 
-        .cart-item .remove-btn:hover {
-            background-color: #c82333;
-        }
+ .combo-features li {
+     padding: 15px 0;
+     border-bottom: 1px solid #eee;
+     color: #555;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
 
-        .cart-total {
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 2px solid #eee;
-            text-align: right;
-            font-weight: bold;
-        }
+ .combo-features li:last-child {
+     border-bottom: none;
+ }
 
-        .cart-gst {
-            text-align: right;
-            font-size: 0.9em;
-            color: #555;
-        }
+ .combo-features .feature-icon {
+     color: #28a745;
+     font-size: 1.2rem;
+ }
 
-        .pay-now-btn {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.1em;
-            width: 100%;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
+ .combo-pricing {
+     padding: 20px 25px;
+     text-align: center;
+     font-size: 1.2rem;
+     color: #777;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 15px;
+ }
 
-        .pay-now-btn:hover {
-            background-color: #218838;
-        }
+ .combo-pricing .original-price {
+     text-decoration: line-through;
+     color: #aaa;
+ }
 
-        .payment-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            text-align: center;
-        }
+ .combo-pricing .discounted-price {
+     font-size: 1.6rem;
+     color: #dc3545;
+     font-weight: bold;
+ }
 
-        .popup-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+ .book-button {
+     background-color: #28a745;
+     color: white;
+     border: none;
+     padding: 18px 30px;
+     cursor: pointer;
+     font-size: 1.1rem;
+     width: 100%;
+     text-align: center;
+     transition: background-color 0.3s ease;
+     border-radius: 0 0 12px 12px;
+     outline: none;
+ }
 
-        .popup-message {
-            margin-bottom: 20px;
-        }
+ .book-button:hover {
+     background-color: #1e7e34;
+ }
 
-        .close-popup-btn {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
+ /* Popup Styling */
+ .popup {
+     display: none;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.7);
+     justify-content: center;
+     align-items: center;
+     z-index: 1000;
+ }
 
-        .close-popup-btn:hover {
-            background-color: #5a6268;
-        }
-        .book-now-btn {
-      background-color: #ff6600;
-      color: white;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 12px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    </style>
-</head>
-<body>
+ .popup-content {
+     background-color: white;
+     padding: 40px;
+     border-radius: 12px;
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+     text-align: center;
+     max-width: 500px;
+     width: 90%;
+ }
 
-<header>
-    <div class="logo-section">
-        <img src="1-removebg-preview (1).png" alt="Urban Company Logo" class="logo">
-        <ul class="categories">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </div>
+ .popup-content p {
+     font-size: 1.2rem;
+     color: #495057;
+     margin-bottom: 30px;
+ }
 
-    <div class="location-search-section">
-        <div class="location-dropdown">
-            <i class="fas fa-map-marker-alt"></i>
-            <span id="location-text">Fetching Location...</span>
-        </div>
-        <input type="text" class="search-input" placeholder="Search services...">
-    </div>
+ .popup-buttons {
+     display: flex;
+     gap: 20px;
+     justify-content: center;
+ }
 
-    <div class="cart-profile-section">
-        <a href="#" class="book-now-btn">Login</a>
-    </div>
+ .popup-buttons button {
+     background-color: #007bff;
+     color: white;
+     border: none;
+     padding: 12px 25px;
+     border-radius: 8px;
+     cursor: pointer;
+     font-size: 1rem;
+     transition: background-color 0.3s ease;
+     outline: none;
+ }
 
-    <div class="hamburger" id="menu-toggle"><i class="fas fa-bars"></i></div>
+ .popup-buttons button:hover {
+     background-color: #0056b3;
+ }
 
-    <nav class="mobile-nav" id="mobileNav">
-        <ul class="categories">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+ #continue-browsing {
+     background-color: #6c757d;
+ }
 
-        <div class="location-search-section">
+ #continue-browsing:hover {
+     background-color: #545b62;
+ }
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+     .combo-container {
+         padding: 20px;
+     }
+
+     .combo-header {
+         font-size: 1.5rem;
+         padding: 20px;
+     }
+
+     .combo-header .icon {
+         font-size: 1.5rem;
+     }
+
+     .combo-features {
+         padding: 15px;
+     }
+
+     .combo-features li {
+         padding: 10px 0;
+         font-size: 0.95rem;
+     }
+
+     .combo-pricing {
+         font-size: 1rem;
+     }
+
+     .combo-pricing .discounted-price {
+         font-size: 1.4rem;
+     }
+
+     .book-button {
+         font-size: 1rem;
+         padding: 15px 25px;
+     }
+
+     .popup-content {
+         padding: 30px;
+     }
+
+     .popup-content p {
+         font-size: 1.1rem;
+         margin-bottom: 20px;
+     }
+
+     .popup-buttons button {
+         font-size: 0.9rem;
+         padding: 10px 20px;
+     }
+ }
+ </style>
+ <body>
+     <header>
+        <div class="logo-section">
+            <img src="1-removebg-preview (1).png" alt="Urban Company Logo" class="logo">
+            <ul class="categories">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        
+          <div class="location-search-section">
             <div class="location-dropdown">
-                <i class="fas fa-map-marker-alt"></i>
-                <span id="mobile-location-text">Fetching Location...</span>
+              <i class="fas fa-map-marker-alt"></i>
+              <span id="location-text">Fetching Location...</span>
             </div>
             <input type="text" class="search-input" placeholder="Search services...">
-        </div>
-
-        <div class="cart-profile-section">
-            <i class="fas fa-shopping-cart cart-icon"></i>
+          </div>
+        
+          <div class="cart-profile-section">
+           
             <a href="#" class="book-now-btn">Login</a>
-        </div>
-    </nav>
-</header>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const toggle = document.getElementById("menu-toggle");
-        const mobileNav = document.getElementById("mobileNav");
-
-        toggle.addEventListener("click", () => {
-            mobileNav.classList.toggle("active");
-        });
-
-        // Geolocation
-        function updateLocationText(lat, lon) {
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=<span class="math-inline">\{lat\}&lon\=</span>{lon}`)
-                .then(res => res.json())
-                .then(data => {
-                    const city = data.address.city || data.address.town || data.address.village || "Your City";
-                    document.getElementById("location-text").textContent = city;
-                    document.getElementById("mobile-location-text").textContent = city;
-                })
-                .catch(() => {
-                    document.getElementById("location-text").textContent = "Location Unavailable";
-                    document.getElementById("mobile-location-text").textContent = "Location Unavailable";
-                });
-        }
-
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                position => {
-                    const { latitude, longitude } = position.coords;
-                    updateLocationText(latitude, longitude);
-                },
-                () => {
-                    document.getElementById("location-text").textContent = "Location Unavailable";
-                    document.getElementById("mobile-location-text").textContent = "Location Unavailable";
-                }
-            );
-        } else {
-            document.getElementById("location-text").textContent = "Geolocation Not Supported";
-            document.getElementById("mobile-location-text").textContent = "Geolocation Not Supported";
-        }
-    });
-</script>
-
-<div class="combo-packages-section">
-    <div class="combo-list">
-        <h2>Combo Packages</h2>
-
-        <div class="combo-item">
-            <h3>"Social Media Blast" Package</h3>
-            <ul class="combo-includes">
-                <li><i class="fas fa-edit"></i> Editing (2 hours)</li>
-                <li><i class="fas fa-music"></i> Music (1 post + 2 stories)</li>
-                <li><i class="fas fa-video"></i> Basic Video Editing (1 short video)</li>
+          </div>
+        
+          <div class="hamburger" id="menu-toggle"><i class="fas fa-bars"></i></div>
+        
+          <nav class="mobile-nav" id="mobileNav">
+            <ul class="categories">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
-            <p class="combo-price">₹25,000</p>
-            <button class="add-combo-to-cart-btn" data-id="combo1" data-name="Social Media Blast Package" data-price="25000">Add to Cart</button>
-        </div>
-
-        <div class="combo-item">
-            <h3>"Content Creation Pro" Package</h3>
-            <ul class="combo-includes">
-                <li><i class="fas fa-edit"></i> Editing (2 hours)</li>
-                <li><i class="fas fa-music"></i> Music (1 post + 2 stories)</li>
-                <li><i class="fas fa-video"></i> Basic Video Editing (1 short video)</li>
-            </ul>
-            <p class="combo-price">₹55,000</p>
-            <button class="add-combo-to-cart-btn" data-id="combo2" data-name="Content Creation Pro Package" data-price="55000">Add to Cart</button>
-        </div>
-
-        <div class="combo-item">
-            <h3>"Event Highlight" Package</h3>
-            <ul class="combo-includes">
-                <li><i class="fas fa-edit"></i> Editing (2 hours)</li>
-                <li><i class="fas fa-music"></i> Music (1 post + 2 stories)</li>
-                <li><i class="fas fa-video"></i> Basic Video Editing (1 short video)</li>
-            </ul>
-            <p class="combo-price">₹70,000</p>
-            <button class="add-combo-to-cart-btn" data-id="combo3" data-name="Event Highlight Package" data-price="70000">Add to Cart</button>
-        </div>
-    </div>
-
-    <div class="cart-section">
-        <h2 class="cart-title">Your Cart</h2>
-        <ul class="cart-items">
-            </ul>
-        <div class="cart-total">
-            Total: ₹0.00
-        </div>
-        <div class="cart-gst">
-            GST (18%): ₹0.00
-        </div>
-        <button class="pay-now-btn" id="payNowBtn" disabled>Pay Now</button>
-    </div>
-</div>
-
-<div class="payment-popup" id="paymentPopup">
-    <h2 class="popup-title">Simulated Payment</h2>
-    <p class="popup-message">This is a simulation of the payment process. In a real application, you would integrate with a payment gateway here.</p>
-    <button class="close-popup-btn" id="closePopupBtn">Close</button>
-</div>
-
-<script>
-    const addComboToCartButtons = document.querySelectorAll('.add-combo-to-cart-btn');
-    const cartItemsList = document.querySelector('.cart-items');
-    const cartTotalElement = document.querySelector('.cart-total');
-    const cartGstElement = document.querySelector('.cart-gst');
-    const payNowButton = document.getElementById('payNowBtn');
-    const paymentPopup = document.getElementById('paymentPopup');
-    const closePopupBtn = document.getElementById('closePopupBtn');
-    let cart = [];
-    const gstRate = 0.18;
+        
+            <div class="location-search-section">
+              <div class="location-dropdown">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="mobile-location-text">Fetching Location...</span>
+              </div>
+              <input type="text" class="search-input" placeholder="Search services...">
+            </div>
+        
+            <div class="cart-profile-section">
+              <i class="fas fa-shopping-cart cart-icon"></i>
+              <a href="#" class="book-now-btn">Login</a>
+            </div>
+          </nav>
+         
+     </header>
     
+     <div class="combo-container">
+         <div class="combo-card photographer-combo">
+             <div class="combo-header">
+                 <i class="icon">📸</i>
+                 <h3>Editing Pro Combo</h3>
+             </div>
+             <ul class="combo-features">
+                 <li><i class="feature-icon">✔️</i> Full-Day Photoshoot</li>
+                 <li><i class="feature-icon">✔️</i> Advanced Editing Suite</li>
+                 <li><i class="feature-icon">✔️</i> Online Gallery Delivery</li>
+                 <li><i class="feature-icon">✨</i> Bonus: Behind-the-Scenes Reel</li>
+             </ul>
+             <div class="combo-pricing">
+                 <span class="original-price">15,000</span>
+                 <span class="discounted-price">9,999</span>
+             </div>
+             <button class="book-button" data-combo="Photographer Pro Combo">Book Now</button>
+         </div>
 
-    function updateCart() {
-        cartItemsList.innerHTML = '';
-        let subtotal = 0;
+         <div class="combo-card influencer-combo">
+             <div class="combo-header">
+                 <i class="icon">📢</i>
+                 <h3>Music Growth Combo</h3>
+             </div>
+             <ul class="combo-features">
+                 <li><i class="feature-icon">✔️</i> Social Media Strategy Session</li>
+                 <li><i class="feature-icon">✔️</i> 3 Branded Content Pieces</li>
+                 <li><i class="feature-icon">✔️</i> Engagement Boost Campaign</li>
+                 <li><i class="feature-icon">📈</i> Bonus: Performance Analytics Report</li>
+             </ul>
+             <div class="combo-pricing">
+                 <span class="original-price">25,000</span>
+                 <span class="discounted-price">19,999</span>
+             </div>
+             <button class="book-button" data-combo="Influencer Growth Combo">Book Now</button>
+         </div>
 
-        cart.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.classList.add('cart-item');
-            listItem.innerHTML = `
-                <span>${item.name}</span>
-                <span>₹${item.price.toLocaleString()}</span>
-                <button class="remove-btn" data-id="${item.id}">Remove</button>
-            `;
-            cartItemsList.appendChild(listItem);
-            subtotal += item.price;
-        });
+         <div class="combo-card editing-combo">
+             <div class="combo-header">
+                 <i class="icon">✂️</i>
+                 <h3>Ultimate Editing + Music Combo</h3>
+             </div>
+             <ul class="combo-features">
+                 <li><i class="feature-icon">✔️</i> Unlimited Photo Retouching (1 Month)</li>
+                 <li><i class="feature-icon">✔️</i> 5 Hours of Video Editing</li>
+                 <li><i class="feature-icon">✔️</i> Color Grading & Correction</li>
+                 <li><i class="feature-icon">🎨</i> Bonus: Custom Preset Pack</li>
+             </ul>
+             <div class="combo-pricing">
+                 <span class="original-price">10,000</span>
+                 <span class="discounted-price">5,999</span>
+             </div>
+             <button class="book-button" data-combo="Ultimate Editing Combo">Book Now</button>
+         </div>
+     </div>
 
-        const gstAmount = subtotal * gstRate;
-        const totalAmount = subtotal + gstAmount;
+     <div id="popup" class="popup">
+         <div class="popup-content">
+             <p><span id="combo-name"></span> added to cart successfully!</p>
+             <div class="popup-buttons">
+                 <button id="continue-browsing">Continue Browsing</button>
+                 <button id="go-to-cart">Go to Cart</button>
+             </div>
+         </div>
+     </div>
 
-        cartTotalElement.textContent = `Total: ₹${subtotal.toLocaleString()}.00`;
-        cartGstElement.textContent = `GST (${(gstRate * 100).toFixed(0)}%): ₹${gstAmount.toLocaleString()}.00`;
+     <script>
+         const bookButtons = document.querySelectorAll('.book-button');
+         const popup = document.getElementById('popup');
+         const comboNameDisplay = document.getElementById('combo-name');
+         const continueBrowsingButton = document.getElementById('continue-browsing');
+         const goToCartButton = document.getElementById('go-to-cart');
 
-        if (cart.length > 0) {
-            payNowButton.disabled = false;
-        } else {
-            payNowButton.disabled = true;
-        }
-    }
+         bookButtons.forEach(button => {
+             button.addEventListener('click', () => {
+                 const comboName = button.dataset.combo;
+                 comboNameDisplay.textContent = comboName;
+                 popup.style.display = 'flex';
+             });
+         });
 
-    addComboToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.dataset.id;
-            const name = this.dataset.name;
-            const price = parseInt(this.dataset.price);
+         continueBrowsingButton.addEventListener('click', () => {
+             popup.style.display = 'none';
+         });
 
-            const existingItem = cart.find(item => item.id === id);
-            if (!existingItem) {
-                cart.push({ id: id, name: name, price: price });
-                updateCart();
-            } else {
-                alert('Item already in cart!');
-            }
-        });
-    });
-
-    cartItemsList.addEventListener('click', function(event) {
-        if (event.target.classList.contains('remove-btn')) {
-            const idToRemove = event.target.dataset.id;
-            cart = cart.filter(item => item.id !== idToRemove);
-            updateCart();
-        }
-    });
-
-    payNowButton.addEventListener('click', function() {
-        if (cart.length > 0) {
-            paymentPopup.style.display = 'block';
-        } else {
-            alert('Your cart is empty!');
-        }
-    });
-
-    closePopupBtn.addEventListener('click', function() {
-        paymentPopup.style.display = 'none';
-    });
-
-    // Initial cart update
-    updateCart();
-</script>
-
-</body>
-</html>
+         goToCartButton.addEventListener('click', () => {
+             window.location.href = 'booking.html';
+         });
+     </script>
+ </body>
+ </html>

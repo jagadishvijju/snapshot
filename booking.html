@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f3f6f9;
+      padding: 40px 20px;
+      color: #333;
+      position: relative;
+    }
+
+    .home-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #0056b3;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 28px;
+      color: #2c3e50;
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .cart-item:hover {
+      background-color: #f9f9f9;
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h4 {
+      margin-bottom: 4px;
+      font-size: 17px;
+      font-weight: 500;
+      color: #1e272e;
+    }
+
+    .item-details p {
+      margin: 3px 0;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .item-price {
+      font-weight: 600;
+      color: #ff6600;
+      margin-top: 4px;
+      font-size: 15px;
+    }
+
+    .remove-btn {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 14px;
+    }
+
+    .remove-btn:hover {
+      background-color: #e04343;
+    }
+
+    .total-section {
+      text-align: right;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-top: 25px;
+    }
+
+    .checkout-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 15px;
+      float: right;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background-color: #218838;
+    }
+
+    .icon {
+      margin-right: 6px;
+      color: #ff6600;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      .home-btn {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+
+      .cart-container {
+        padding: 20px;
+        margin: 10px auto;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+
+      .cart-item img {
+        width: 80px;
+        height: 65px;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      .checkout-btn {
+        width: 100%;
+        float: none;
+        margin-top: 15px;
+        font-size: 15px;
+      }
+
+      .total-section {
+        text-align: left;
+        font-size: 17px;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
+
+  <h2><i class="fas fa-shopping-cart icon"></i>Your Booking Cart</h2>
+  <div class="cart-container" id="cartContainer"></div>
+  <div class="total-section" id="totalAmount"></div>
+  <button class="checkout-btn" onclick="alert('Proceeding to payment...')">
+    <i class="fas fa-credit-card icon"></i>Proceed to Payment
+  </button>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cartContainer');
+    const totalAmount = document.getElementById('totalAmount');
+
+    function renderCart() {
+      cartContainer.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p style="text-align:center; font-size:16px;">Your cart is empty.</p>';
+        totalAmount.textContent = '';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += parseFloat(item.price);
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="item-details">
+            <h4>${item.name}</h4>
+            <p><i class="fas fa-map-marker-alt icon"></i>${item.location}</p>
+            <p class="item-price">₹${item.price}</p>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(itemDiv);
+      });
+
+      totalAmount.innerText = `Total: ₹${total}`;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>
